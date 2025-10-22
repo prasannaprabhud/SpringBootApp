@@ -1,0 +1,120 @@
+
+
+## 🌱 What is Spring Boot?
+
+**Spring Boot** is a framework built on top of **Spring Framework** that makes it easy to create Java-based **web applications and APIs** quickly — with **less code and configuration**.
+
+---
+
+## ⚙️ Why Use Spring Boot?
+
+| Advantage                   | Description                                                                            |
+| --------------------------- | -------------------------------------------------------------------------------------- |
+| 🚀 **Easy setup**           | No need for complex XML configuration.                                                 |
+| 🔥 **Embedded server**      | Runs directly with Tomcat/Jetty — no need to deploy to an external server.             |
+| ⚡ **Auto Configuration**   | Automatically configures many things like DataSource, DispatcherServlet, etc.          |
+| 📦 **Starter dependencies** | Simplifies adding required libraries using starters (e.g., `spring-boot-starter-web`). |
+| 🧰 **Production-ready**     | Has built-in monitoring, health checks, and metrics.                                   |
+
+---
+
+## 🧩 Spring Boot Application Structure
+
+```
+my-springboot-app/
+ ├── src/
+ │   ├── main/
+ │   │   ├── java/
+ │   │   │   └── com/example/demo/
+ │   │   │       ├── DemoApplication.java
+ │   │   │       └── HelloController.java
+ │   │   └── resources/
+ │   │       └── application.properties
+ └── pom.xml
+```
+
+---
+
+## 📜 The Main Class
+
+```java
+package com.example.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DemoApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
+    }
+}
+```
+
+🟢 The `@SpringBootApplication` annotation combines:
+
+* `@Configuration` — for bean configuration
+* `@EnableAutoConfiguration` — enables auto setup
+* `@ComponentScan` — scans for components in the package
+
+---
+
+## 🌐 Simple REST API Example
+
+```java
+package com.example.demo;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloController {
+
+    @GetMapping("/hello")
+    public String sayHello() {
+        return "Hello Spring Boot!";
+    }
+}
+```
+
+Now run the app and visit 👉 **[http://localhost:8080/hello](http://localhost:8080/hello)**
+
+---
+
+## ⚙️ Configuration File
+
+**application.properties**
+
+```properties
+server.port=9090
+spring.application.name=MyFirstApp
+```
+
+You can use it to change the port, database credentials, or any app setting.
+
+---
+
+## 🧰 Common Spring Boot Starters
+
+| Starter                         | Purpose                              |
+| ------------------------------- | ------------------------------------ |
+| `spring-boot-starter-web`       | Build RESTful web apps               |
+| `spring-boot-starter-data-jpa`  | Database access using JPA/Hibernate  |
+| `spring-boot-starter-thymeleaf` | Build server-side rendered web pages |
+| `spring-boot-starter-security`  | Add authentication and authorization |
+| `spring-boot-starter-test`      | Testing tools (JUnit, Mockito, etc.) |
+
+---
+
+## 🏁 Run the App
+
+You can run it in three ways:
+
+1. In **IDE** → Run the main class.
+2. In **terminal** → `mvn spring-boot:run`
+3. After packaging →
+
+   ```bash
+   mvn clean package
+   java -jar target/myapp-0.0.1-SNAPSHOT.jar
+   ```
